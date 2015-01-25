@@ -25,21 +25,21 @@ activities <- read.table("UCI HAR Dataset/activity_labels.txt")
 
 
 # Assign columns names to x,y,s
-colnames(sdata)=c("subjects")
-colnames(xdata)= features[,2]
-colnames(ydata)= c("activities")
+colnames(sdata) <- c("subjects")
+colnames(xdata) <- features[,2]
+colnames(ydata) <- c("activities")
 
 # Combine the subject, feature and activity data
-combined=cbind(sdata, ydata, xdata)
+combined <- cbind(sdata, ydata, xdata)
 
 ## 2 Extracts only the measurements on the mean and the standard deviation for each measurement
 
 #get the feature column names that contain mean or std
-fMeanStdNames= features[,2][grep("mean\\(\\)|std\\(\\)", features[,2])]
+fMeanStdNames <- features[,2][grep("mean\\(\\)|std\\(\\)", features[,2])]
 
 #"combined" data, subset columns with the names as in "fMeanStdNames"
 #and also the activity and subject column
-subdata=cbind(combined[,c(1,2)], combined[,colnames(combined) %in% fMeanStdNames])
+subdata <- cbind(combined[,c(1,2)], combined[,colnames(combined) %in% fMeanStdNames])
 
 ## 3 Uses descriptive activity names to name the activities in the data set
 
